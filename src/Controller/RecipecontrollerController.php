@@ -27,11 +27,11 @@ final class RecipecontrollerController extends AbstractController
         // dd($request->attributes->get("slug"),$request->attributes->get("id"));
         $requete=$recipeRepository->find($id);
     
-    //          if($requete->getSlug() !== $slug){
-    //     return $this->redirectToRoute('show', [
-    //         'slug'=>$requete->getSlug(),
-    //         'id'=> $requete->getId() ]);
-    //  }
+             if($requete->getSlug() !== $slug){
+        return $this->redirectToRoute('show', [
+            'slug'=>$requete->getSlug(),
+            'id'=> $requete->getId() ]);
+     }
         return $this->render('recipecontroller/show.html.twig', [
             'recette'=>$requete ]);
      }
