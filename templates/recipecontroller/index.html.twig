@@ -1,0 +1,14 @@
+{%extends 'base.html.twig'%}
+
+{%block title 'pade de recette'%} 
+{%block body%} 
+<p>salut le monde comment vous allez?????????????????????????????????</p>
+    <ul>
+    {% for donnee in recette%}
+        <li>
+        <a href='{{url("show",{id:donnee.id, slug:donnee.slug})}}'>{{donnee.getTitle}}</a>
+        </li>
+    {%endfor%}
+    </ul>
+
+{%endblock%}
