@@ -24,7 +24,7 @@ class Recipe
     private ?\DateTimeImmutable $createDap = null;
 
     #[ORM\Column(type: Types::DATETIMETZ_IMMUTABLE)]
-    private ?\DateTimeImmutable $update = null;
+    private ?\DateTimeImmutable $updateda = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -73,14 +73,14 @@ class Recipe
         return $this;
     }
 
-    public function getUpdate(): ?\DateTimeImmutable
+    public function getUpdateda(): ?\DateTimeImmutable
     {
-        return $this->update;
+        return $this->updateda;
     }
 
-    public function setUpdate(\DateTimeImmutable $update): static
+    public function setUpdateda(\DateTimeImmutable $updateda): static
     {
-        $this->update = $update;
+        $this->updateda = $updateda;
 
         return $this;
     }

@@ -3,12 +3,25 @@
 {%block title 'pade de recette'%} 
 {%block body%} 
 <p>salut le monde comment vous allez?????????????????????????????????</p>
+   <p>
+   <a class="btn btn-primary btn-sm" href='{{path("recipe.create")}}'>new recette</a>
+   
+   </p>
     <ul>
     {% for donnee in recette%}
         <li>
-        <a href='{{url("show",{id:donnee.id, slug:donnee.slug})}}'>{{donnee.getTitle}}</a>
+   
+        <a href='{{url("show",{id:donnee.id, slug:donnee.slug})}}'>{{donnee.getTitle}}</a> <a class="btn btn-primary btn-sm" href='{{path("recipe.edit",{'id': donnee.id})}}'>new recette</a>
         </li>
+        
     {%endfor%}
     </ul>
-
+     {% for donnee in recette%}
+        <li>
+        {{donnee.id}}
+        </li>
+        {%else%}
+        <p>Aucune donnee n'est trouvé</p>
+    {%endfor%}
+    </ul>
 {%endblock%}
