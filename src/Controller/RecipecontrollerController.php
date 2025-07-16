@@ -37,7 +37,7 @@ final class RecipecontrollerController extends AbstractController
         return $this->render('recipecontroller/show.html.twig', [
             'recette'=>$requete ]);
      }
-    #[Route('/recette/{id}/edit', name: 'recipe.edit')]
+    #[Route('/recette/{id}/edit', name: 'recipe.edit', methods: ['GET', 'POST'])]
     public function edit(Recipe $recipe, Request $request, RecipeRepository $recipeRepository,EntityManagerInterface $em): Response
     {
         // modification du comptenu de la base de donnee
@@ -57,7 +57,7 @@ final class RecipecontrollerController extends AbstractController
     public function create(Request $request, RecipeRepository $recipeRepository,EntityManagerInterface $em): Response
     {
         // craetion d'un menu
-        $recipe= new Recipe();// recipe est la base de  donnee
+        $recipe= new Recipe();// recipe est la base de  donnee. on cree un new objet
         $form = $this->createForm(RecipeTypeForm::class, $recipe);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -69,5 +69,12 @@ final class RecipecontrollerController extends AbstractController
         return $this->render('recipecontroller/create.html.twig', [
             'form' => $form
         ]);
+    }
+    #[Route('/recette/{id}/edit', name: 'recipe.delete', methods:['DELETE'])]
+
+    public function delete(Recipe $recipe, EntityManagerInterface $em): Response  {  // suppression d'un menu
+        $em->remove($recipe);
+        $em->flush();
+        return $this->redirectToRoute('recette');
     }
 }

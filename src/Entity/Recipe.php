@@ -5,8 +5,14 @@ namespace App\Entity;
 use App\Repository\RecipeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Mime\Message;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+//contrainte sur les champs
+#[UniqueEntity('slug', message: 'Ce slug existe déjà. Veuillez en choisir un autre.'
+)]
 class Recipe
 {
     #[ORM\Id]
@@ -15,6 +21,7 @@ class Recipe
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    // #[Assert\Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/', message:'Minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character ')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]

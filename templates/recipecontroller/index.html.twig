@@ -11,7 +11,11 @@
     {% for donnee in recette%}
         <li>
    
-        <a href='{{url("show",{id:donnee.id, slug:donnee.slug})}}'>{{donnee.getTitle}}</a> <a class="btn btn-primary btn-sm" href='{{path("recipe.edit",{'id': donnee.id})}}'>new recette</a>
+        <a href='{{url("show",{id:donnee.id, slug:donnee.slug})}}'>{{donnee.getTitle}}</a> <a class="btn btn-primary btn-sm" href='{{path("recipe.edit",{'id': donnee.id})}}'>Editer</a>
+        <form action='{{path("recipe.delete",{'id': donnee.id})}}' method='post'>
+        <input type='hidden' name='_method' value='DELETE'>
+        <button type='submit' class="btn btn-primary btn-sm" >supprimer</button>
+        </form>
         </li>
         
     {%endfor%}
