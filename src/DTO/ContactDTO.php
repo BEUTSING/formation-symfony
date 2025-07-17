@@ -10,7 +10,7 @@ class ContactDTO
     // #[Assert\NotBlank(message: 'Le nom est obligatoire')]
 
     #[Assert\NotBlank(message: 'Le nom est obligatoire')]
-    #[Assert\length(min: 3, max: 200)]
+    #[Assert\Length(min: 3, max: 200)]
     public string $name = '';
      
     #[Assert\NotBlank(message: 'L\'email est obligatoire')]
@@ -18,7 +18,7 @@ class ContactDTO
     public string $email = '';
 
     #[Assert\NotBlank(message: 'Le nom est obligatoire')]
-    #[Assert\length(min: 3, max: 200)]
+    #[Assert\Length(min: 3, max: 200)]
     public string $message = '';
 
 }  
